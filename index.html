@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Spam Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #dbeafe, #f0f9ff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #1e3a8a;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            resize: none;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #1e40af;
+        }
+        .result {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Spam Classifier</h1>
+        <form method="POST" action="/predict">
+            <textarea name="email_text" rows="10" placeholder="Enter email text here..." required></textarea><br>
+            <input type="submit" value="Classify">
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <h2>Result: {{ prediction }}</h2>
+                <p><strong>Email:</strong> {{ email }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
